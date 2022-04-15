@@ -1,5 +1,5 @@
+#include "OpenAutoFrame.hpp"
 #include "OpenAutoModule.hpp"
-#include <QWidget>
 
 OpenAutoModule::OpenAutoModule() : IModule() {
 
@@ -15,7 +15,7 @@ IModule::Metadata OpenAutoModule::metadata() {
 }
 
 QWidget * OpenAutoModule::widget() {
-    return new QWidget();
+    return new OpenAutoFrame();
 }
 
 OpenAutoModule::~OpenAutoModule() {
