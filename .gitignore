@@ -1,2 +1,6 @@
 # Ignore compiled module files
+build/
 module/
+
+# Libraries
+libs/

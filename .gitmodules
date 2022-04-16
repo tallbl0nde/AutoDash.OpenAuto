@@ -1,0 +1,6 @@
+[submodule "libs/aasdk"]
+	path = libs/aasdk
+	url = https://github.com/openDsh/aasdk
+[submodule "libs/openauto"]
+	path = libs/openauto
+	url = https://github.com/openDsh/openauto
