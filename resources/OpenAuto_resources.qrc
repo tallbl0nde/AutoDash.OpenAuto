@@ -3,6 +3,7 @@
         <file>aa_video.qml</file>
     </qresource>
     <qresource prefix="/OpenAuto">
+        <file>animated/pulsing-circles.apng</file>
         <file>icons/android-auto.svg</file>
     </qresource>
 </RCC>

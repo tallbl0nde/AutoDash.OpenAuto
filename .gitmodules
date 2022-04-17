@@ -4,3 +4,6 @@
 [submodule "libs/openauto"]
 	path = libs/openauto
 	url = https://github.com/openDsh/openauto
+[submodule "libs/QtApng"]
+	path = libs/QtApng
+	url = https://github.com/Skycoder42/QtApng

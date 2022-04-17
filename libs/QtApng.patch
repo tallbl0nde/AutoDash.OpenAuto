@@ -1,0 +1,13 @@
+diff --git a/examples/apng/sample/main.cpp b/examples/apng/sample/main.cpp
+index 5d011a9..4e8a27a 100644
+--- a/examples/apng/sample/main.cpp
++++ b/examples/apng/sample/main.cpp
+@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
+ #ifdef QTAPNG_PLUGIN_ROOT
+ 	qputenv("QT_PLUGIN_PATH", QTAPNG_PLUGIN_ROOT + QString{QDir::listSeparator()}.toUtf8() + qgetenv("QT_PLUGIN_PATH"));
+ #endif
+-	qDebug() << "QT_PLUGIN_PATH" << qEnvironmentVariable("QT_PLUGIN_PATH");
++	qDebug() << "QT_PLUGIN_PATH" << qgetenv("QT_PLUGIN_PATH");
+ 
+ 	QApplication a(argc, argv);
+ 	Widget w;

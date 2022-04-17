@@ -1,5 +1,7 @@
 #include <QGridLayout>
+#include <QHBoxLayout>
 #include <QLabel>
+#include <QMovie>
 
 #include "OpenAutoFrame.hpp"
 #include "widget/OpenAutoWidget.hpp"
@@ -12,8 +14,17 @@ OpenAutoFrame::OpenAutoFrame(QWidget * parent) : QWidget(parent) {
 
     // Connect message
     QWidget * connectWidget = new QWidget();
+    QHBoxLayout * layout = new QHBoxLayout(connectWidget);
+
+    QLabel * animationLabel = new QLabel(connectWidget);
+    QMovie * animation = new QMovie(":/OpenAuto/animated/pulsing-circles.apng");        // TODO: Delete
+    animationLabel->setMovie(animation);
+    animation->start();
+    layout->addWidget(animationLabel, 0, Qt::AlignVCenter);
+
     QLabel * label = new QLabel("Connect device to start Android Auto", connectWidget);
-    label->setAlignment(Qt::AlignCenter);
+    layout->addWidget(label, 0, Qt::AlignVCenter);
+
     this->stack->addWidget(connectWidget);
 
     // Android auto frame
@@ -26,8 +37,8 @@ OpenAutoFrame::OpenAutoFrame(QWidget * parent) : QWidget(parent) {
     }, androidAutoFrame);
 
     // Display child stacked widget
-    QGridLayout * layout = new QGridLayout(this);
-    layout->addWidget(this->stack);
+    QGridLayout * layout2 = new QGridLayout(this);
+    layout2->addWidget(this->stack);
 }
 
 void OpenAutoFrame::showAndroidAuto(const bool show) {

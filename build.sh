@@ -27,6 +27,14 @@ make -j$(nproc)
 sudo make install
 popd > /dev/null
 
+# QtApng
+pushd ./libs/QtApng > /dev/null
+git apply ../QtApng.patch
+qmake
+make sub-src-all -j$(nproc)
+sudo make install
+popd > /dev/null
+
 # Build module
 mkdir -p build
 cd build
