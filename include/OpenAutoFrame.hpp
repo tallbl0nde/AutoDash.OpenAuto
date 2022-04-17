@@ -17,6 +17,9 @@ class OpenAutoFrame : public QWidget {
         // OpenAuto worker class.
         OpenAutoWorker * worker;
 
+        // Helper to create the waiting to connect widget.
+        QWidget * createConnectWidget(QWidget * parent);
+
     public:
         // Constructs the frame.
         OpenAutoFrame(QWidget * = nullptr);
