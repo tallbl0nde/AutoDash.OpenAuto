@@ -1,5 +1,5 @@
 project(AutoDash.OpenAuto CXX)
-cmake_minimum_required(VERSION 3.2.0)
+cmake_minimum_required(VERSION 3.7.0)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
@@ -64,7 +64,6 @@ if (GST_BUILD)
     # If building for RPi get the Pi model
     if (RPI_BUILD)
         add_definitions(-DRPI)
-        include(${CMAKE_CURRENT_SOURCE_DIR_2}/cmake_modules/functions.cmake)
 
         findRpiRevision( RPI_REVISION )
         math(EXPR RPI_MODEL "(0x${RPI_REVISION}>>4)&0xFF")

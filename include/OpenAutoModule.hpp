@@ -20,7 +20,7 @@ class OpenAutoModule : public QObject, IModule {
         Metadata metadata() override;
 
         // Returns the main widget for the module.
-        QWidget * widget() override;
+        QWidget * widget(QWidget * parent = nullptr) override;
 
         // Destroys the module object.
         ~OpenAutoModule();

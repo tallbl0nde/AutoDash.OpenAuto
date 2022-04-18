@@ -9,31 +9,31 @@
 #include "OpenAutoWorker.hpp"
 #include "widget/OpenAutoWidget.hpp"
 
-OpenAutoFrame::OpenAutoFrame(QWidget * parent) : QWidget(parent) {
+OpenAutoFrame::OpenAutoFrame(QWidget * parent) : QStackedWidget(parent) {
     // Create stacked widget to swap between connect message
     // and actual stream
-    this->stack = new QStackedWidget();
+    this->setGeometry(parent->rect());
+    QGridLayout * layout = new QGridLayout(this);
+    layout->setMargin(0);
 
     // Connect frame
-    this->stack->addWidget(this->createConnectWidget(this->stack));
+    this->addWidget(this->createConnectWidget(this));
 
     // Android auto frame
-    QWidget * androidAutoWidget = this->createAndroidAutoWidget(this->stack);
-    this->stack->addWidget(androidAutoWidget);
+    QWidget * androidAutoWidget = this->createAndroidAutoWidget(this);
+    this->addWidget(androidAutoWidget);
 
     // Create OpenAutoWorker and link everything up
     this->worker = new OpenAutoWorker([this](bool connected) {
         this->showAndroidAuto(connected);
     }, androidAutoWidget);
-
-    // Display child stacked widget
-    QGridLayout * layout = new QGridLayout(this);
-    layout->setMargin(0);
-    layout->addWidget(this->stack);
 }
 
 QWidget * OpenAutoFrame::createAndroidAutoWidget(QWidget * parent) {
     QWidget * widget = new QWidget(parent);
+    widget->setGeometry(parent->geometry());
+    widget->setAttribute(Qt::WA_AcceptTouchEvents);
+
     QGridLayout * layout = new QGridLayout(widget);
     layout->setMargin(0);
 
@@ -104,5 +104,5 @@ QWidget * OpenAutoFrame::createConnectWidget(QWidget * parent) {
 }
 
 void OpenAutoFrame::showAndroidAuto(const bool show) {
-    this->stack->setCurrentIndex(show ? 1 : 0);
+    this->setCurrentIndex(show ? 1 : 0);
 }

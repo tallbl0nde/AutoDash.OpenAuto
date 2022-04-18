@@ -14,8 +14,8 @@ IModule::Metadata OpenAutoModule::metadata() {
     };
 }
 
-QWidget * OpenAutoModule::widget() {
-     return new OpenAutoFrame();
+QWidget * OpenAutoModule::widget(QWidget * parent) {
+     return new OpenAutoFrame(parent);
 }
 
 OpenAutoModule::~OpenAutoModule() {

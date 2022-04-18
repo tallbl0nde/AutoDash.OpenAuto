@@ -2,18 +2,14 @@
 #define OPENAUTOFRAME_HPP
 
 #include <QStackedWidget>
-#include <QWidget>
 
 class OpenAutoWorker;
 
 // Main frame for displaying OpenAuto (both video and other widgets)
-class OpenAutoFrame : public QWidget {
+class OpenAutoFrame : public QStackedWidget {
     Q_OBJECT
 
     private:
-        // Stacked widget to swap between android auto and connect message.
-        QStackedWidget * stack;
-
         // OpenAuto worker class.
         OpenAutoWorker * worker;
 

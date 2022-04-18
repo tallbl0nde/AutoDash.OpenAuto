@@ -18,7 +18,7 @@ OpenAutoWorker::OpenAutoWorker(const std::function<void(bool)> & connectedCallba
     {
 
     // TODO: Add toggle for night mode
-
+    this->serviceFactory.resize();
     this->createIOServiceWorkers();
     this->createUSBWorkers();
 
