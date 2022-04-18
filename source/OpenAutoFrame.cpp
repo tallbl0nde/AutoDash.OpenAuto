@@ -6,8 +6,8 @@
 #include <QMovie>
 
 #include "OpenAutoFrame.hpp"
-#include "widget/OpenAutoWidget.hpp"
 #include "OpenAutoWorker.hpp"
+#include "widget/OpenAutoWidget.hpp"
 
 OpenAutoFrame::OpenAutoFrame(QWidget * parent) : QWidget(parent) {
     // Create stacked widget to swap between connect message
@@ -18,24 +18,34 @@ OpenAutoFrame::OpenAutoFrame(QWidget * parent) : QWidget(parent) {
     this->stack->addWidget(this->createConnectWidget(this->stack));
 
     // Android auto frame
-    Widget::OpenAutoWidget * androidAutoFrame = new Widget::OpenAutoWidget();
-    this->stack->addWidget(androidAutoFrame);
+    QWidget * androidAutoWidget = this->createAndroidAutoWidget(this->stack);
+    this->stack->addWidget(androidAutoWidget);
 
     // Create OpenAutoWorker and link everything up
     this->worker = new OpenAutoWorker([this](bool connected) {
         this->showAndroidAuto(connected);
-    }, androidAutoFrame);
+    }, androidAutoWidget);
 
     // Display child stacked widget
     QGridLayout * layout = new QGridLayout(this);
+    layout->setMargin(0);
     layout->addWidget(this->stack);
+}
+
+QWidget * OpenAutoFrame::createAndroidAutoWidget(QWidget * parent) {
+    QWidget * widget = new QWidget(parent);
+    QGridLayout * layout = new QGridLayout(widget);
+    layout->setMargin(0);
+
+    layout->addWidget(new Widget::OpenAutoWidget());
+    return widget;
 }
 
 QWidget * OpenAutoFrame::createConnectWidget(QWidget * parent) {
     // Layout everything vertically
     QWidget * widget = new QWidget(parent);
     QVBoxLayout * layout = new QVBoxLayout(widget);
-    layout->setMargin(10);
+    layout->setMargin(15);
 
     // Waiting section
     QWidget * waitingWidget = new QWidget();

@@ -17,6 +17,9 @@ class OpenAutoFrame : public QWidget {
         // OpenAuto worker class.
         OpenAutoWorker * worker;
 
+        // Helper to create the android auto widget.
+        QWidget * createAndroidAutoWidget(QWidget * parent);
+
         // Helper to create the waiting to connect widget.
         QWidget * createConnectWidget(QWidget * parent);
 

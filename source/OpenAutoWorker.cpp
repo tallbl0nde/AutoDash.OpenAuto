@@ -1,5 +1,4 @@
-#include <QGuiApplication>
-
+#include "AndroidAutoInterface.hpp"
 #include "OpenAutoWorker.hpp"
 
 OpenAutoWorker::OpenAutoWorker(const std::function<void(bool)> & connectedCallback, QWidget * videoFrame) :
@@ -23,6 +22,10 @@ OpenAutoWorker::OpenAutoWorker(const std::function<void(bool)> & connectedCallba
     this->createIOServiceWorkers();
     this->createUSBWorkers();
 
+    AndroidAutoInterface * interface = new AndroidAutoInterface();
+    this->serviceFactory.setAndroidAutoInterface(interface);
+
+    interface->setServiceFactory(&(this->serviceFactory));
     this->openAutoApp->waitForDevice(true);
 }
 
