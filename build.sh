@@ -40,5 +40,5 @@ fi
 # Build module
 mkdir -p build
 cd build
-cmake ..
+cmake ${installArgs} -DGST_BUILD=true ..
 make -j$(nproc)
