@@ -1,7 +1,7 @@
 #ifndef OPENAUTOMODULE_HPP
 #define OPENAUTOMODULE_HPP
 
-#include "IModule.hpp"
+#include "interface/IModule.hpp"
 
 // Unique identifier for module.
 #define OPENAUTOMODULE_IID "tallbl0nde.AutoDash.OpenAutoModule"
@@ -16,10 +16,10 @@ class OpenAutoModule : public QObject, IModule {
         // Constructs the module.
         OpenAutoModule();
 
-        // Returns metadata for the module.
+        // Implement IModule.
+        std::string versionCompiledFor() override;
+        void initialize(IResolver * resolver) override;
         Metadata metadata() override;
-
-        // Returns the main widget for the module.
         QWidget * widget(QWidget * parent = nullptr) override;
 
         // Destroys the module object.

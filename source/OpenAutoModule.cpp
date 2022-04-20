@@ -1,7 +1,16 @@
 #include "OpenAutoFrame.hpp"
 #include "OpenAutoModule.hpp"
+#include "Version.hpp"
 
 OpenAutoModule::OpenAutoModule() : IModule() {
+
+}
+
+std::string OpenAutoModule::versionCompiledFor() {
+    return AUTODASH_VERSION;
+}
+
+void OpenAutoModule::initialize(IResolver * resolver) {
 
 }
 

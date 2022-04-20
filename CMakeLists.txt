@@ -8,7 +8,8 @@ set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(RESOURCES_DIR ${ROOT_DIR}/resources)
 set(SOURCE_DIR ${ROOT_DIR}/source)
 set(INCLUDE_DIR ${ROOT_DIR}/include)
-set(MODULE_INCLUDE_DIR ${ROOT_DIR}/../../include/interface)
+set(COMMON_INCLUDE_DIR ${ROOT_DIR}/../../common/include)
+set(COMMON_SOURCE_DIR ${ROOT_DIR}/../../common/source)
 include(${ROOT_DIR}/cmake_modules/functions.cmake)
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${ROOT_DIR}/module)
@@ -76,14 +77,14 @@ endif (GST_BUILD)
 
 link_directories(${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
-file(GLOB_RECURSE source_files ${INCLUDE_DIR}/*.hpp ${SOURCE_DIR}/*.cpp ${RESOURCES_DIR}/*.qrc)
+file(GLOB_RECURSE source_files ${COMMON_SOURCE_DIR}/*.cpp ${COMMON_INCLUDE_DIR}/*.hpp ${INCLUDE_DIR}/*.hpp ${SOURCE_DIR}/*.cpp ${RESOURCES_DIR}/*.qrc)
 
 add_library(AutoDash.OpenAuto SHARED ${source_files})
 
 target_include_directories(AutoDash.OpenAuto PRIVATE
     ${CMAKE_CURRENT_BINARY_DIR}
     ${INCLUDE_DIR}
-    ${MODULE_INCLUDE_DIR}
+    ${COMMON_INCLUDE_DIR}
     )
 
 target_include_directories(AutoDash.OpenAuto SYSTEM PRIVATE
