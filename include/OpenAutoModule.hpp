@@ -20,6 +20,7 @@ class OpenAutoModule : public QObject, IModule {
         std::string versionCompiledFor() override;
         void initialize(IResolver * resolver) override;
         Metadata metadata() override;
+        std::vector<ISettingEntry *> settingEntries(ISettingEntryFactory * settingEntryFactory) override;
         QWidget * widget(QWidget * parent = nullptr) override;
 
         // Destroys the module object.

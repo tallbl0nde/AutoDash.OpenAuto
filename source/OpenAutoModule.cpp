@@ -23,6 +23,11 @@ IModule::Metadata OpenAutoModule::metadata() {
     };
 }
 
+std::vector<ISettingEntry *> OpenAutoModule::settingEntries(ISettingEntryFactory * settingEntryFactory) {
+    // TODO: Return actual settings
+    return std::vector<ISettingEntry *>();
+}
+
 QWidget * OpenAutoModule::widget(QWidget * parent) {
      return new OpenAutoFrame(parent);
 }
