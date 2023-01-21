@@ -90,7 +90,7 @@ QWidget * OpenAutoFrame::createConnectWidget(QWidget * parent) {
     hintLabel->setStyleSheet("color: darkgray");
     hintLayout->addWidget(hintLabel, 0, Qt::AlignLeft | Qt::AlignVCenter);
 
-    QLabel * hintHighlightLabel = new QLabel("Jono's Galaxy Note10+");
+    QLabel * hintHighlightLabel = new QLabel("Jono's Pixel 7 Pro");
     hintHighlightLabel->setFont(hintFont);
     hintHighlightLabel->setStyleSheet("color: white");
     hintLayout->addWidget(hintHighlightLabel, 0, Qt::AlignRight | Qt::AlignVCenter);
